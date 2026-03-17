@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import loadingImg from "../../assets/ca56b88970efd38b8e05be00539b5769d2dbaacc.png";
+import loadingImg from "../../assets/lele_loading.gif";
 
 interface Props {
   onDone: () => void;
