@@ -3,6 +3,11 @@ import { useNavigate } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import logoImg from "../../assets/6b7cea4d455900676a17175fb7bc972172d2e1b4.png";
 
+import posterAgentSmith from "../../assets/Poster design/Agent smith.jpg";
+import posterChamber from "../../assets/Poster design/Chamber of darkness.jpg";
+import posterKamisama from "../../assets/Poster design/Kamisama.jpg";
+import posterRasen from "../../assets/Poster design/Rasen in Okinawa (Awich).jpg";
+
 const MONO = "'Space Mono', monospace";
 const SERIF = "'Playfair Display', serif";
 const SANS = "'DM Sans', sans-serif";
@@ -16,27 +21,35 @@ const dotGrid: React.CSSProperties = {
 const projects = [
   {
     id: "01",
-    title: "Brand Identity",
-    category: "Branding",
-    year: "2024",
-    desc: "A full visual identity system — logo, colour palette, and type.",
-    img: "https://images.unsplash.com/photo-1622503247445-cfe020cd0e5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFuZCUyMGlkZW50aXR5JTIwbG9nbyUyMGdyYXBoaWMlMjBkZXNpZ24lMjBtaW5pbWFsfGVufDF8fHx8MTc3Mzc0Mjk4NXww&ixlib=rb-4.1.0&q=80&w=1080",
+    title: "Agent Smith",
+    category: "Poster Design",
+    year: "2023",
+    desc: "A typographic tribute to The Matrix Reloaded — ornate flourishes meet dystopian repetition.",
+    img: posterAgentSmith,
   },
   {
     id: "02",
-    title: "Poster Series",
-    category: "Print",
-    year: "2024",
-    desc: "Bold typographic posters exploring form, colour, and rhythm.",
-    img: "https://images.unsplash.com/photo-1734543920075-59872330bec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0eXBvZ3JhcGhpYyUyMHBvc3RlciUyMGFydCUyMGJsYWNrJTIwd2hpdGUlMjBlZGl0b3JpYWx8ZW58MXx8fHwxNzczNzQyOTg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    title: "Chamber of Darkness",
+    category: "Poster Design",
+    year: "2023",
+    desc: "Celestial gold on black — a mystical poster where radiance pierces the shadows.",
+    img: posterChamber,
   },
   {
     id: "03",
-    title: "Typography",
-    category: "Type",
-    year: "2023",
-    desc: "Custom lettering and type systems for editorial print work.",
-    img: "https://images.unsplash.com/photo-1627543858482-b98694bcb2fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZXR0ZXJpbmclMjB0eXBvZ3JhcGh5JTIwaGFuZCUyMGRyYXduJTIwYmxhY2t8ZW58MXx8fHwxNzczNzQyOTg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    title: "Kamisama",
+    category: "Poster Design",
+    year: "2024",
+    desc: "Bold red kanji over dark manga-inspired ink — raw intensity channelling the divine.",
+    img: posterKamisama,
+  },
+  {
+    id: "04",
+    title: "Rasen in Okinawa (Awich)",
+    category: "Poster Design",
+    year: "2024",
+    desc: "A spiralling homage to Awich and Okinawa — Japanese typography meets street culture.",
+    img: posterRasen,
   },
 ];
 

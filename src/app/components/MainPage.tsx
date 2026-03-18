@@ -13,7 +13,7 @@ const MONO = "'Space Mono', monospace";
 const SERIF = "'Playfair Display', serif";
 const SANS = "'DM Sans', sans-serif";
 
-const workItems = ["Brand Identity", "Poster Series", "Typography", "Packaging", "Editorial", "Digital UI"];
+const workItems = ["Agent Smith", "Chamber of Darkness", "Kamisama", "Rasen in Okinawa (Awich)"];
 const photoItems = ["Travel", "Wedding", "Portrait", "Street", "Architecture", "Nature"];
 
 /* ── Navigation half-panel ───────────────────────────── */
