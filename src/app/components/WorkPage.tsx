@@ -53,13 +53,104 @@ const projects = [
   },
 ];
 
-function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+/* ── Lightbox ──────────────────────────────────────────── */
+function Lightbox({
+  item,
+  onClose,
+}: {
+  item: (typeof projects)[0] | null;
+  onClose: () => void;
+}) {
+  if (!item) return null;
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(17,17,17,0.94)",
+        zIndex: 500,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 32,
+        animation: "lbIn 0.3s ease forwards",
+      }}
+    >
+      <style>{`@keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }`}</style>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          maxWidth: 960,
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          gap: 0,
+          background: "#FAFAFA",
+        }}
+      >
+        {/* Image */}
+        <div style={{ width: "100%", maxHeight: "72vh", overflow: "hidden" }}>
+          <img
+            src={item.img}
+            alt={item.title}
+            style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", background: "#111" }}
+          />
+        </div>
+        {/* Meta bar */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "18px 24px",
+            borderTop: "1px solid #E4E2DF",
+          }}
+        >
+          <div style={{ display: "flex", gap: 24, alignItems: "baseline" }}>
+            <span style={{ fontFamily: MONO, fontSize: "0.6rem", color: "#AAAAAA", letterSpacing: "0.15em" }}>{item.id}</span>
+            <span style={{ fontFamily: SERIF, fontSize: "1.1rem", color: "#111111" }}>{item.title}</span>
+            <span style={{ fontFamily: MONO, fontSize: "0.55rem", color: "#CCCCCC", letterSpacing: "0.1em" }}>{item.category}</span>
+          </div>
+          <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
+            <span style={{ fontFamily: MONO, fontSize: "0.55rem", color: "#CCCCCC", letterSpacing: "0.1em" }}>{item.year}</span>
+            <button
+              onClick={onClose}
+              style={{
+                fontFamily: MONO,
+                fontSize: "0.6rem",
+                color: "#888888",
+                background: "none",
+                border: "1px solid #CCCCCC",
+                cursor: "pointer",
+                padding: "6px 14px",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Project Card ─────────────────────────────────────── */
+function ProjectCard({
+  project,
+  onClick,
+}: {
+  project: (typeof projects)[0];
+  onClick: () => void;
+}) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onClick}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -175,6 +266,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
 export function WorkPage() {
   const navigate = useNavigate();
+  const [lightbox, setLightbox] = useState<(typeof projects)[0] | null>(null);
 
   return (
     <div style={{ ...dotGrid, minHeight: "100vh", animation: "pageFadeIn 0.5s ease forwards" }}>
@@ -287,7 +379,7 @@ export function WorkPage() {
           }
         `}</style>
         {projects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
+          <ProjectCard key={p.id} project={p} onClick={() => setLightbox(p)} />
         ))}
       </div>
 
@@ -361,6 +453,8 @@ export function WorkPage() {
           Photography →
         </button>
       </footer>
+
+      <Lightbox item={lightbox} onClose={() => setLightbox(null)} />
     </div>
   );
 }
